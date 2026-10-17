@@ -26,11 +26,11 @@ then download and verify the pinned installer before running it:
 sudo apt-get update -qq
 sudo apt-get install -y curl ca-certificates openssl python3
 mkdir -m 700 sentinelgrid-install && cd sentinelgrid-install
-base=https://github.com/Lurrn2757/sentinelgrid-releases/releases/download/v0.1.3
+base=https://github.com/Lurrn2757/sentinelgrid-releases/releases/download/v0.1.4
 curl --proto '=https' --proto-redir '=https' -fsSL "$base/checksums.txt" -o checksums.txt
 curl --proto '=https' --proto-redir '=https' -fsSL "$base/install.sh" -o install.sh
 awk '$2 == "install.sh" {print}' checksums.txt | sha256sum --check --status &&
-  sudo bash install.sh --version 0.1.3 --install-docker
+  sudo bash install.sh --version 0.1.4 --install-docker
 ~~~
 
 The installer downloads and verifies the server bundle and the image archive for
