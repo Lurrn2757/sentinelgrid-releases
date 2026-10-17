@@ -11,6 +11,13 @@ durable offline metrics, and verified backup/recovery. Integrations require
 your own credentials. Server installation does not install Zabbix itself; it
 preserves the existing optional Zabbix polling/webhook integration.
 
+Version 0.1.5 includes stricter stack health checks, independent retries for
+failed offline/recovery notifications, and an active default AI-report model.
+It passed all 20 release CI jobs and a fresh Debian 12 VM install, real systemd
+startup, reboot, outage replay and full backup/restore verification. Configure
+TLS or a trusted VPN, validate the external integrations you enable and schedule
+off-host backups before production rollout.
+
 ## Install
 
 Supported: Ubuntu 22.04/24.04 and Debian 12, amd64/arm64, with systemd. The
@@ -26,11 +33,11 @@ then download and verify the pinned installer before running it:
 sudo apt-get update -qq
 sudo apt-get install -y curl ca-certificates openssl python3
 mkdir -m 700 sentinelgrid-install && cd sentinelgrid-install
-base=https://github.com/Lurrn2757/sentinelgrid-releases/releases/download/v0.1.4
+base=https://github.com/Lurrn2757/sentinelgrid-releases/releases/download/v0.1.5
 curl --proto '=https' --proto-redir '=https' -fsSL "$base/checksums.txt" -o checksums.txt
 curl --proto '=https' --proto-redir '=https' -fsSL "$base/install.sh" -o install.sh
 awk '$2 == "install.sh" {print}' checksums.txt | sha256sum --check --status &&
-  sudo bash install.sh --version 0.1.4 --install-docker
+  sudo bash install.sh --version 0.1.5 --install-docker
 ~~~
 
 The installer downloads and verifies the server bundle and the image archive for
