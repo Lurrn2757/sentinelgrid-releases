@@ -1,98 +1,97 @@
-# SentinelGrid downloads
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=220&text=SentinelGrid&fontAlign=50&fontAlignY=40&color=0:0f172a,35:111827,70:1e293b,100:0ea5e9&fontColor=ffffff&desc=Infrastructure%20Monitoring%20%7C%20Alerting%20%7C%20Control%20Plane&descAlign=50&descAlignY=65&animation=fadeIn" alt="SentinelGrid banner" />
+</p>
 
-Install the server, install an agent, connect it and monitor your infrastructure.
-This repository holds customer documentation and packaged releases. Application
-source and CI remain in a separate private development repository. GitHub's
-source archives for this repository contain only these public documents.
+<p align="center">
+  <a href="https://github.com/Lurrn2757/sentinelgrid/releases">
+    <img src="https://img.shields.io/github/v/release/Lurrn2757/sentinelgrid-releases?style=for-the-badge&logo=github&label=latest%20release" />
+  </a>
+  <img src="https://img.shields.io/badge/status-active%20development-0ea5e9?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/platform-linux%20%7C%20docker%20%7C%20proxmox-111827?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/monitoring-self--hosted-22c55e?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/focus-reliability%20%26%20control-f97316?style=for-the-badge" />
+</p>
 
-Features include host and Proxmox metrics, PostgreSQL ingestion, Grafana,
-Zabbix alert lifecycles, Telegram controls, optional AI reports and email alerts,
-durable offline metrics, and verified backup/recovery. Integrations require
-your own credentials. Server installation does not install Zabbix itself; it
-preserves the existing optional Zabbix polling/webhook integration.
+<p align="center">
+  <b>SentinelGrid</b> is a self-hosted infrastructure monitoring and alerting platform built for operators who want
+  <b>visibility, actionability, and control</b> — without surrendering their stack to someone else’s cloud.
+</p>
 
-Version 0.1.5 includes stricter stack health checks, independent retries for
-failed offline/recovery notifications, and an active default AI-report model.
-It passed all 20 release CI jobs and a fresh Debian 12 VM install, real systemd
-startup, reboot, outage replay and full backup/restore verification. Configure
-TLS or a trusted VPN, validate the external integrations you enable and schedule
-off-host backups before production rollout.
+<p align="center">
+  <i>Observe. Detect. Alert. Recover. Repeat.</i>
+</p>
 
-## Install
+---
 
-Supported: Ubuntu 22.04/24.04 and Debian 12, amd64/arm64, with systemd. The
-server requires Docker Engine and Compose >=2.24. Download packages from
-[SentinelGrid releases](https://github.com/Lurrn2757/sentinelgrid-releases/releases).
-The source repository stays private; installation requires no source checkout,
-Python package downloads or registry authentication.
+## ✨ What is SentinelGrid?
 
-On a supported server, install prerequisites from the signed OS repositories,
-then download and verify the pinned installer before running it:
+**SentinelGrid** is a modular monitoring platform for infrastructure, services, and operational workflows.
 
-~~~bash
-sudo apt-get update -qq
-sudo apt-get install -y curl ca-certificates openssl python3
-mkdir -m 700 sentinelgrid-install && cd sentinelgrid-install
-base=https://github.com/Lurrn2757/sentinelgrid-releases/releases/download/v0.1.5
-curl --proto '=https' --proto-redir '=https' -fsSL "$base/checksums.txt" -o checksums.txt
-curl --proto '=https' --proto-redir '=https' -fsSL "$base/install.sh" -o install.sh
-awk '$2 == "install.sh" {print}' checksums.txt | sha256sum --check --status &&
-  sudo bash install.sh --version 0.1.5 --install-docker
-~~~
+It combines:
 
-The installer downloads and verifies the server bundle and the image archive for
-this host, loads the images, generates private credentials, starts the stack and
-checks readiness. Docker installation requires confirmation. Grafana credentials
-are in `/etc/sentinelgrid/sentinelgrid.env` (0600). Ports bind to loopback by
-default. Set trusted interface addresses in the config and restart, or explicitly
-pass `--public-bind` during install for a protected LAN/VPN. A remote connection
-needs an existing TLS reverse proxy or a trusted VPN/LAN.
+- **agent-based telemetry collection**
+- **central ingestion and storage**
+- **alert routing and event lifecycle management**
+- **Telegram-based operational control**
+- **Grafana-compatible visualization**
+- **Proxmox-aware infrastructure actions**
+- a transition path toward the **native Sentinel Engine**
 
-Create a private connection kit on the server:
+This repository contains the **source code and core platform logic**.
 
-~~~bash
-sudo sentinelgrid agent add --name web-01 --arch amd64 \
-  --server https://monitor.example.com --output /root/web-01-kit
-~~~
+> For packaged public releases, installers, and deployment assets, visit:  
+> **[sentinelgrid-releases](https://github.com/Lurrn2757/sentinelgrid-releases)**
 
-Use `--arch arm64` for ARM hosts. The server URL must reach the ingestion API,
-usually port 8000 behind your HTTPS proxy. For a trusted LAN/VPN, use an HTTP
-URL with `--allow-http`. Transfer the entire kit securely to the target host,
-keep its directory private (0700) and files private (0600), and run:
+---
 
-~~~bash
-cd /path/to/web-01-kit
-sudo bash connect.sh
-~~~
+## 🔥 Why SentinelGrid?
 
-The installer registers the host, sends its first metric, starts the service and
-checks that it is active. The token permits one registration and expires after
-one hour. Delete both copies of the kit after use. Each agent receives its own
-credential; no server admin key is shipped. Prerequisites are `python3`, `curl`,
-`openssl`, CA certificates, `tar`, `useradd`, `runuser` and systemd. Python is used
-for installation validation; the monitoring agent carries its own runtime.
+Because basic dashboards are cute.
 
-For manual enrollment, the verified `install-agent.sh --server URL` prompts for
-a token without echoing it. Use `--token-file PATH` for a private unattended
-input, or `--no-enroll` to prepare without registration/startup. Obtain tokens
-with `sudo sentinelgrid token create --name HOST --expires-in 1 --max-uses 1`.
-The older offline wheel format remains available for development fixtures.
+SentinelGrid is being built to be a **real operator platform** — not just “graphs on a screen.”
 
-Check connections with `sudo -u sentinelgrid-agent sentinelgrid-agent status`
-and `sudo systemctl status sentinelgrid-agent`. If initial delivery fails after
-registration, the service retries with durable buffering and the installer exits
-nonzero. If registration fails, correct the URL/network or obtain a fresh token,
-register as the service user with `--token-stdin`, then start the service.
+It is meant to help you:
 
-Checksums from the same HTTPS origin detect corruption relative to the manifest;
-they are not signatures. Kits also pin the agent checksum from the installed
-server release. Machine administrators can inspect bytecode and binaries; this
-packaging removes loose application source, not all possibility of inspection.
-See the release assets for installers, offline image archives and agent packages.
+- **collect host and infrastructure metrics**
+- **track failures and incident states**
+- **receive actionable alerts**
+- **perform controlled operational actions**
+- **retain visibility during outages**
+- **evolve toward an in-house alerting engine**
 
-`sentinelgrid update` and rollback remain planned. Installers refuse existing
-installations and persistent data. Back up configuration and data before manual
-migration or uninstall. Uninstall preserves `/var/lib/sentinelgrid` unless
-`--purge` is explicitly passed. All existing monitoring features remain present;
-Telegram, Zabbix, Proxmox, Gemini and email need their integration credentials.
+In short:
 
+> **SentinelGrid is the bridge between monitoring, response, and control.**
+
+---
+
+## 🧠 Core philosophy
+
+SentinelGrid is built around a few simple ideas:
+
+- **Own your monitoring**
+- **Keep the stack observable**
+- **Don’t lose data during outages**
+- **Treat alerts like stateful events, not noisy spam**
+- **Give operators tools, not just notifications**
+- **Design for the future native Sentinel Engine**
+
+---
+
+## ⚙️ Current architecture
+
+```text
+Agents / Proxmox / Hosts
+          │
+          ▼
+   Sentinel Ingestion API
+          │
+          ▼
+      PostgreSQL
+          │
+          ├── Grafana Dashboards
+          ├── Telegram Bot / Alert Workflows
+          ├── Operational Actions
+          └── Alert Source Integration
+                ├── Zabbix Adapter (current)
+                └── Sentinel Engine (planned / evolving)
