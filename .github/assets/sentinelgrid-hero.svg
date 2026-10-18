@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+<title id="title">SentinelGrid: The Grid Never Blinks</title>
+<desc id="desc">A cinematic midnight-black SentinelGrid product banner featuring a futuristic radar command interface and neon cyan instrumentation.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#03080f"/><stop offset=".6" stop-color="#07111c"/><stop offset="1" stop-color="#04080e"/></linearGradient>
+ <radialGradient id="halo"><stop stop-color="#1cbfa9" stop-opacity=".2"/><stop offset=".6" stop-color="#14858a" stop-opacity=".09"/><stop offset="1" stop-color="#0b1522" stop-opacity="0"/></radialGradient>
+ <linearGradient id="shine" x1="0" x2="1"><stop stop-color="#d9fffa"/><stop offset=".6" stop-color="#64f3de"/><stop offset="1" stop-color="#2698c6"/></linearGradient>
+ <linearGradient id="sweep" x1=".1" y1="1" x2="1" y2="0"><stop stop-color="#38e5bf" stop-opacity="0"/><stop offset=".9" stop-color="#46d6df" stop-opacity=".15"/><stop offset="1" stop-color="#7dfff0" stop-opacity=".38"/></linearGradient>
+ <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="5"/></filter>
+ <clipPath id="round"><rect x="1" y="1" width="1198" height="518" rx="18" /></clipPath>
+</defs>
+<g clip-path="url(#round)">
+<rect width="1200" height="520" fill="url(#bg)"/>
+<g stroke="#8cebea" stroke-opacity=".044" stroke-width="1"><line x1="0" y1="0" x2="0" y2="520" />
+<line x1="48" y1="0" x2="48" y2="520" />
+<line x1="96" y1="0" x2="96" y2="520" />
+<line x1="144" y1="0" x2="144" y2="520" />
+<line x1="192" y1="0" x2="192" y2="520" />
+<line x1="240" y1="0" x2="240" y2="520" />
+<line x1="288" y1="0" x2="288" y2="520" />
+<line x1="336" y1="0" x2="336" y2="520" />
+<line x1="384" y1="0" x2="384" y2="520" />
+<line x1="432" y1="0" x2="432" y2="520" />
+<line x1="480" y1="0" x2="480" y2="520" />
+<line x1="528" y1="0" x2="528" y2="520" />
+<line x1="576" y1="0" x2="576" y2="520" />
+<line x1="624" y1="0" x2="624" y2="520" />
+<line x1="672" y1="0" x2="672" y2="520" />
+<line x1="720" y1="0" x2="720" y2="520" />
+<line x1="768" y1="0" x2="768" y2="520" />
+<line x1="816" y1="0" x2="816" y2="520" />
+<line x1="864" y1="0" x2="864" y2="520" />
+<line x1="912" y1="0" x2="912" y2="520" />
+<line x1="960" y1="0" x2="960" y2="520" />
+<line x1="1008" y1="0" x2="1008" y2="520" />
+<line x1="1056" y1="0" x2="1056" y2="520" />
+<line x1="1104" y1="0" x2="1104" y2="520" />
+<line x1="1152" y1="0" x2="1152" y2="520" />
+<line x1="1200" y1="0" x2="1200" y2="520" />
+<line x1="0" y1="0" x2="1200" y2="0" />
+<line x1="0" y1="48" x2="1200" y2="48" />
+<line x1="0" y1="96" x2="1200" y2="96" />
+<line x1="0" y1="144" x2="1200" y2="144" />
+<line x1="0" y1="192" x2="1200" y2="192" />
+<line x1="0" y1="240" x2="1200" y2="240" />
+<line x1="0" y1="288" x2="1200" y2="288" />
+<line x1="0" y1="336" x2="1200" y2="336" />
+<line x1="0" y1="384" x2="1200" y2="384" />
+<line x1="0" y1="432" x2="1200" y2="432" />
+<line x1="0" y1="480" x2="1200" y2="480" /></g>
+<circle cx="920" cy="250" r="365" fill="url(#halo)"/>
+<path d="M 0 435 H 1200" stroke="#2c6272" stroke-opacity=".65"/>
+<path d="M 670 0 V520" stroke="#32525c" stroke-opacity=".23"/>
+<path d="M 670 0 l55 0 M 670 0 l0 55 M 670 520 l55 0 M 670 520 l0 -55" stroke="#56b6b5" stroke-opacity=".25" fill="none"/>
+<rect x="43" y="38" width="16" height="16" rx="3" stroke="#72f4df" stroke-width="1.4" fill="none"/>
+<path d="M 47 46 l4 4 5 -9" stroke="#72f4df" stroke-width="1.2" fill="none"/>
+<text x="71" y="50" font-family="monospace" font-size="12" letter-spacing="3" fill="#9eb6bf">JLS TECHNOLOGIES</text>
+<text x="1149" y="49" text-anchor="end" font-family="monospace" font-size="11" letter-spacing="2" fill="#5ac5b7">// SYSTEMS DIVISION</text>
+<g font-family="Arial, Helvetica, sans-serif" font-weight="800" letter-spacing="-5">
+ <text x="42" y="192" font-size="87" fill="#f5ffff">SENTINEL</text>
+ <text x="43" y="301" font-size="124" fill="url(#shine)">GRID<tspan font-size="36" dy="-48" dx="12" fill="#5b8c96">/</tspan></text>
+</g>
+<rect x="48" y="327" width="45" height="3" fill="#6ff5e0"/>
+<text x="106" y="332" font-size="13" font-family="monospace" font-weight="600" letter-spacing="3" fill="#d0eef1">THE GRID NEVER BLINKS.</text>
+<text x="47" y="369" font-size="17" font-family="Arial, Helvetica, sans-serif" fill="#a1b5c0">Infrastructure intelligence. Incident response. Operator control.</text>
+<text x="47" y="396" font-size="12" font-family="monospace" letter-spacing="1" fill="#6b96a3">BUILT TO SEE THE SIGNAL IN THE NOISE.</text>
+<g fill="none" stroke="#58c7c1" stroke-opacity=".34" stroke-width="1">
+ <circle cx="920" cy="251" r="166"/>
+ <circle cx="920" cy="251" r="131"/>
+ <circle cx="920" cy="251" r="92"/>
+ <circle cx="920" cy="251" r="52"/>
+ <path d="M 732 251 H 1109 M 920 63 V439" stroke-opacity=".25"/>
+ <rect x="824" y="155" width="192" height="192" rx="5" transform="rotate(45 920 251)" stroke-opacity=".1"/>
+</g>
+<path d="M920 251 L920 89 A162 162 0 0 1 1077 213 Z" fill="url(#sweep)" />
+<path d="M 920 251 L 1000 112" stroke="#75fce8" stroke-width="3" stroke-opacity=".45" filter="url(#glow)"/>
+<path d="M 920 251 L 1000 112" stroke="#a4fff0" stroke-width="1.2" stroke-opacity=".85"/>
+<g><line x1="1070.0" y1="251.0" x2="1096.0" y2="251.0" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="1073.6" y1="278.1" x2="1081.5" y2="279.5" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="1066.6" y1="304.4" x2="1074.1" y2="307.1" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="1049.9" y1="326.0" x2="1072.4" y2="339.0" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="1039.5" y1="351.3" x2="1045.6" y2="356.4" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="1020.3" y1="370.5" x2="1025.4" y2="376.6" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="995.0" y1="380.9" x2="1008.0" y2="403.4" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="973.4" y1="397.6" x2="976.1" y2="405.1" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="947.1" y1="404.6" x2="948.5" y2="412.5" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="920.0" y1="401.0" x2="920.0" y2="427.0" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="892.9" y1="404.6" x2="891.5" y2="412.5" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="866.6" y1="397.6" x2="863.9" y2="405.1" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="845.0" y1="380.9" x2="832.0" y2="403.4" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="819.7" y1="370.5" x2="814.6" y2="376.6" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="800.5" y1="351.3" x2="794.4" y2="356.4" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="790.1" y1="326.0" x2="767.6" y2="339.0" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="773.4" y1="304.4" x2="765.9" y2="307.1" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="766.4" y1="278.1" x2="758.5" y2="279.5" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="770.0" y1="251.0" x2="744.0" y2="251.0" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="766.4" y1="223.9" x2="758.5" y2="222.5" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="773.4" y1="197.6" x2="765.9" y2="194.9" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="790.1" y1="176.0" x2="767.6" y2="163.0" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="800.5" y1="150.7" x2="794.4" y2="145.6" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="819.7" y1="131.5" x2="814.6" y2="125.4" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="845.0" y1="121.1" x2="832.0" y2="98.6" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="866.6" y1="104.4" x2="863.9" y2="96.9" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="892.9" y1="97.4" x2="891.5" y2="89.5" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="920.0" y1="101.0" x2="920.0" y2="75.0" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="947.1" y1="97.4" x2="948.5" y2="89.5" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="973.4" y1="104.4" x2="976.1" y2="96.9" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="995.0" y1="121.1" x2="1008.0" y2="98.6" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="1020.3" y1="131.5" x2="1025.4" y2="125.4" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="1039.5" y1="150.7" x2="1045.6" y2="145.6" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="1049.9" y1="176.0" x2="1072.4" y2="163.0" stroke="#60e8e2" stroke-opacity="0.65" stroke-width="2" />
+<line x1="1066.6" y1="197.6" x2="1074.1" y2="194.9" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" />
+<line x1="1073.6" y1="223.9" x2="1081.5" y2="222.5" stroke="#60e8e2" stroke-opacity="0.25" stroke-width="1" /></g>
+<g><circle cx="795" cy="145" r="3" fill="#67fce0" fill-opacity=".85" />
+<path d="M 795 145 L 920 251" stroke="#3f9d9f" stroke-opacity=".2" fill="none" />
+<circle cx="1045" cy="150" r="3" fill="#67fce0" fill-opacity=".85" />
+<path d="M 1045 150 L 920 251" stroke="#3f9d9f" stroke-opacity=".2" fill="none" />
+<circle cx="804" cy="365" r="3" fill="#67fce0" fill-opacity=".85" />
+<path d="M 804 365 L 920 251" stroke="#3f9d9f" stroke-opacity=".2" fill="none" />
+<circle cx="1032" cy="370" r="3" fill="#67fce0" fill-opacity=".85" />
+<path d="M 1032 370 L 920 251" stroke="#3f9d9f" stroke-opacity=".2" fill="none" />
+<circle cx="1130" cy="251" r="3" fill="#67fce0" fill-opacity=".85" />
+<path d="M 1130 251 L 920 251" stroke="#3f9d9f" stroke-opacity=".2" fill="none" />
+<circle cx="922" cy="76" r="3" fill="#67fce0" fill-opacity=".85" />
+<path d="M 922 76 L 920 251" stroke="#3f9d9f" stroke-opacity=".2" fill="none" />
+<circle cx="922" cy="423" r="3" fill="#67fce0" fill-opacity=".85" />
+<path d="M 922 423 L 920 251" stroke="#3f9d9f" stroke-opacity=".2" fill="none" /></g>
+<path d="M 840 274 l25 -9 24 13 22 -55 22 58 27 -22 18 4 28 -35" fill="none" stroke="#82f9e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 840 274 l25 -9 24 13 22 -55 22 58 27 -22 18 4 28 -35" fill="none" stroke="#82f9e3" stroke-width="8" stroke-opacity=".26" filter="url(#glow)"/>
+<circle cx="920" cy="251" r="6" fill="#d5fff6"/><circle cx="920" cy="251" r="13" stroke="#67fce0" fill="none" stroke-opacity=".55"/>
+<text x="931" y="76" font-size="10" font-family="monospace" letter-spacing="2" fill="#82dacf">// SIGNAL FIELD</text>
+<text x="925" y="449" font-size="10" text-anchor="middle" font-family="monospace" letter-spacing="2" fill="#79a7ad">TELEMETRY / EVENTS / RESPONSE</text>
+<rect x="48" y="465" width="7" height="7" rx="1" fill="#5df0cc"/>
+<text x="67" y="472" font-size="12" font-family="monospace" letter-spacing="1.6" fill="#b3c8cd">MONITORING   /   ALERTING   /   CONTROL</text>
+<text x="1148" y="472" text-anchor="end" font-family="monospace" font-size="11" letter-spacing="1" fill="#7e9ca6">SENTINELGRID // DISTRIBUTION</text>
+</g>
+<rect x="1" y="1" width="1198" height="518" rx="18" fill="none" stroke="#2b5964" stroke-width="2"/>
+</svg>

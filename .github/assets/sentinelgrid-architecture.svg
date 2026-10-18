@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="at ad">
+<title id="at">SentinelGrid system architecture</title>
+<desc id="ad">Current metrics flow uses agents, ingestion, PostgreSQL and Grafana. Current alert sources include an external Zabbix adapter. Sentinel Engine V1 remains in development.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#050b12"/><stop offset="1" stop-color="#0a1622"/></linearGradient><linearGradient id="flow"><stop stop-color="#77f5dd"/><stop offset="1" stop-color="#6ca9ed"/></linearGradient></defs>
+<rect width="1200" height="400" rx="15" fill="url(#bg)"/>
+<g stroke="#305460" stroke-opacity=".17"><line x1="0" y1="0" x2="0" y2="400"/><line x1="40" y1="0" x2="40" y2="400"/><line x1="80" y1="0" x2="80" y2="400"/><line x1="120" y1="0" x2="120" y2="400"/><line x1="160" y1="0" x2="160" y2="400"/><line x1="200" y1="0" x2="200" y2="400"/><line x1="240" y1="0" x2="240" y2="400"/><line x1="280" y1="0" x2="280" y2="400"/><line x1="320" y1="0" x2="320" y2="400"/><line x1="360" y1="0" x2="360" y2="400"/><line x1="400" y1="0" x2="400" y2="400"/><line x1="440" y1="0" x2="440" y2="400"/><line x1="480" y1="0" x2="480" y2="400"/><line x1="520" y1="0" x2="520" y2="400"/><line x1="560" y1="0" x2="560" y2="400"/><line x1="600" y1="0" x2="600" y2="400"/><line x1="640" y1="0" x2="640" y2="400"/><line x1="680" y1="0" x2="680" y2="400"/><line x1="720" y1="0" x2="720" y2="400"/><line x1="760" y1="0" x2="760" y2="400"/><line x1="800" y1="0" x2="800" y2="400"/><line x1="840" y1="0" x2="840" y2="400"/><line x1="880" y1="0" x2="880" y2="400"/><line x1="920" y1="0" x2="920" y2="400"/><line x1="960" y1="0" x2="960" y2="400"/><line x1="1000" y1="0" x2="1000" y2="400"/><line x1="1040" y1="0" x2="1040" y2="400"/><line x1="1080" y1="0" x2="1080" y2="400"/><line x1="1120" y1="0" x2="1120" y2="400"/><line x1="1160" y1="0" x2="1160" y2="400"/><line x1="0" y1="0" x2="1200" y2="0"/><line x1="0" y1="40" x2="1200" y2="40"/><line x1="0" y1="80" x2="1200" y2="80"/><line x1="0" y1="120" x2="1200" y2="120"/><line x1="0" y1="160" x2="1200" y2="160"/><line x1="0" y1="200" x2="1200" y2="200"/><line x1="0" y1="240" x2="1200" y2="240"/><line x1="0" y1="280" x2="1200" y2="280"/><line x1="0" y1="320" x2="1200" y2="320"/><line x1="0" y1="360" x2="1200" y2="360"/></g>
+<text x="35" y="38" font-family="monospace" font-size="15" font-weight="bold" letter-spacing="2" fill="#d7f4f1">// THE SIGNAL PATH</text>
+<text x="1160" y="38" text-anchor="end" font-family="monospace" font-size="12" letter-spacing="1" fill="#789aa5">CURRENT ARCHITECTURE / V1 TRANSITION</text>
+<rect x="35" y="74" width="254" height="97" rx="10" fill="#0c1c29" stroke="#2e6071" stroke-width="1.4"/>
+<path d="M51 89 h27" stroke="#5cebd3" stroke-width="2"/>
+<text x="51" y="108" font-family="monospace" font-size="10" letter-spacing="1.4" fill="#79a5b0">01 / COLLECT</text>
+<text x="51" y="135" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#edf9f7">HOST AGENTS</text>
+<text x="51" y="154" font-family="monospace" font-size="11" fill="#83a4ad">on-host metrics</text><rect x="327" y="74" width="254" height="97" rx="10" fill="#0c1c29" stroke="#2e6071" stroke-width="1.4"/>
+<path d="M343 89 h27" stroke="#5cebd3" stroke-width="2"/>
+<text x="343" y="108" font-family="monospace" font-size="10" letter-spacing="1.4" fill="#79a5b0">02 / RECEIVE</text>
+<text x="343" y="135" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#edf9f7">INGESTION API</text>
+<text x="343" y="154" font-family="monospace" font-size="11" fill="#83a4ad">validated telemetry</text><rect x="619" y="74" width="254" height="97" rx="10" fill="#0c1c29" stroke="#2e6071" stroke-width="1.4"/>
+<path d="M635 89 h27" stroke="#5cebd3" stroke-width="2"/>
+<text x="635" y="108" font-family="monospace" font-size="10" letter-spacing="1.4" fill="#79a5b0">03 / PERSIST</text>
+<text x="635" y="135" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#edf9f7">POSTGRESQL</text>
+<text x="635" y="154" font-family="monospace" font-size="11" fill="#83a4ad">time-series + state</text><rect x="911" y="74" width="254" height="97" rx="10" fill="#0c1c29" stroke="#2e6071" stroke-width="1.4"/>
+<path d="M927 89 h27" stroke="#5cebd3" stroke-width="2"/>
+<text x="927" y="108" font-family="monospace" font-size="10" letter-spacing="1.4" fill="#79a5b0">04 / EXPLORE</text>
+<text x="927" y="135" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#edf9f7">GRAFANA</text>
+<text x="927" y="154" font-family="monospace" font-size="11" fill="#83a4ad">trends + visibility</text><rect x="35" y="222" width="254" height="97" rx="10" fill="#0c1c29" stroke="#2e6071" stroke-width="1.4"/>
+<path d="M51 237 h27" stroke="#5cebd3" stroke-width="2"/>
+<text x="51" y="256" font-family="monospace" font-size="10" letter-spacing="1.4" fill="#79a5b0">01 / EXTERNAL</text>
+<text x="51" y="283" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#edf9f7">ZABBIX</text>
+<text x="51" y="302" font-family="monospace" font-size="11" fill="#83a4ad">existing event source</text><rect x="327" y="222" width="254" height="97" rx="10" fill="#0c1c29" stroke="#2e6071" stroke-width="1.4"/>
+<path d="M343 237 h27" stroke="#5cebd3" stroke-width="2"/>
+<text x="343" y="256" font-family="monospace" font-size="10" letter-spacing="1.4" fill="#79a5b0">02 / NORMALIZE</text>
+<text x="343" y="283" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#edf9f7">ALERT ADAPTER</text>
+<text x="343" y="302" font-family="monospace" font-size="11" fill="#83a4ad">incident lifecycle</text><rect x="619" y="222" width="254" height="97" rx="10" fill="#0c1c29" stroke="#2e6071" stroke-width="1.4"/>
+<path d="M635 237 h27" stroke="#5cebd3" stroke-width="2"/>
+<text x="635" y="256" font-family="monospace" font-size="10" letter-spacing="1.4" fill="#79a5b0">03 / ROUTE</text>
+<text x="635" y="283" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#edf9f7">NOTIFICATIONS</text>
+<text x="635" y="302" font-family="monospace" font-size="11" fill="#83a4ad">stateful delivery</text><rect x="911" y="222" width="254" height="97" rx="10" fill="#0c1c29" stroke="#2e6071" stroke-width="1.4"/>
+<path d="M927 237 h27" stroke="#5cebd3" stroke-width="2"/>
+<text x="927" y="256" font-family="monospace" font-size="10" letter-spacing="1.4" fill="#79a5b0">04 / ACT</text>
+<text x="927" y="283" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#edf9f7">TELEGRAM</text>
+<text x="927" y="302" font-family="monospace" font-size="11" fill="#83a4ad">operator workflows</text><path d="M 289 123 h34 m-8 -5 l8 5 l-8 5" stroke="#65decf" stroke-width="2" fill="none"/><path d="M 289 271 h34 m-8 -5 l8 5 l-8 5" stroke="#65decf" stroke-width="2" fill="none"/><path d="M 581 123 h34 m-8 -5 l8 5 l-8 5" stroke="#65decf" stroke-width="2" fill="none"/><path d="M 581 271 h34 m-8 -5 l8 5 l-8 5" stroke="#65decf" stroke-width="2" fill="none"/><path d="M 873 123 h34 m-8 -5 l8 5 l-8 5" stroke="#65decf" stroke-width="2" fill="none"/><path d="M 873 271 h34 m-8 -5 l8 5 l-8 5" stroke="#65decf" stroke-width="2" fill="none"/><path d="M 496 222 V197 H 746 V173" fill="none" stroke="#61c0d1" stroke-dasharray="4 7" stroke-width="1.4" stroke-opacity=".54"/>
+<rect x="36" y="342" width="1128" height="37" rx="6" fill="#10252b" stroke="#337b79" stroke-dasharray="4 5"/>
+<circle cx="57" cy="361" r="4" fill="#d9bb75"/>
+<text x="74" y="366" font-family="monospace" font-size="12" letter-spacing=".8" fill="#e6d4a0">NEXT / SENTINEL ENGINE V1</text>
+<text x="400" y="366" font-family="monospace" font-size="12" fill="#92b7bd">Native rule evaluation + trigger detection. IN DEVELOPMENT, NOT RELEASED.</text>
+<rect x="1" y="1" width="1198" height="398" rx="15" fill="none" stroke="#294f5b" stroke-width="2" />
+</svg>
