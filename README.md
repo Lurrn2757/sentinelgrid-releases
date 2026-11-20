@@ -1,239 +1,40 @@
-<div align="center">
+# SentinelGrid 0.2.1
 
-<img src=".github/assets/sentinelgrid-hero.svg" width="100%" alt="SentinelGrid — The Grid Never Blinks. Cinematic telemetry command interface." />
+Self-hosted Linux monitoring with customer dashboards, configurable alerts and recurring Microsoft Teams updates.
 
-<br />
+[Download 0.2.1](https://github.com/Lurrn2757/sentinelgrid-releases/releases/tag/v0.2.1) · [Release notes](releases/0.2.1.md) · [Server setup](docs/0.2.1/server.md) · [Agent setup](docs/0.2.1/agent.md) · [Notifications](docs/0.2.1/NOTIFICATIONS.md)
 
-<a href="https://github.com/Lurrn2757/sentinelgrid-releases/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/Lurrn2757/sentinelgrid-releases?style=for-the-badge&label=RELEASE&labelColor=0A1420&color=42DCC5" /></a>
-<img alt="Self-hosted" src="https://img.shields.io/badge/DEPLOYMENT-SELF--HOSTED-081624?style=for-the-badge&labelColor=0A1420&color=1A8D96" />
-<img alt="Linux and Proxmox" src="https://img.shields.io/badge/ENVIRONMENT-LINUX%20%2F%20PROXMOX-081624?style=for-the-badge&labelColor=0A1420&color=1A8D96" />
+## One server, one agent
 
-<br /><br />
+The server hosts the dashboard, receives telemetry and delivers notifications. Each monitored machine runs an outbound agent. Customers see their assigned hosts and can tune alert thresholds. Administrators see the fleet.
 
-### YOUR INFRASTRUCTURE HAS A PULSE. WE MAKE IT VISIBLE.
+Linux AMD64 and ARM64 downloads include the executable, systemd installer, service configuration and setup guide. The server package is about 4 MB compressed and the agent about 3 MB.
 
-**Self-hosted telemetry · Incident workflows · Infrastructure control**
+## Included in 0.2.1
 
-Monitor the systems that matter. Keep the signal when the network fails. Turn incidents into actions instead of another tab nobody checks.
+- CPU, memory, root disk, network totals, load, uptime, kernel and listening-port inventory.
+- Active TCP connection checks, missing-heartbeat detection and offline telemetry replay.
+- Customer defaults, host overrides and a preview of threshold changes against current readings.
+- Slow TCP and flapping detection, disk-exhaustion forecasts and a recent host-change timeline.
+- Gmail, Outlook, Telegram and Microsoft Teams group-chat alerts, recovery messages and scheduled fleet updates.
+- Separate host credentials, scoped customer access and persistent notification retries.
 
-<br />
+## Download and install
 
-[**↗ GET THE LATEST RELEASE**](https://github.com/Lurrn2757/sentinelgrid-releases/releases/latest) &nbsp;&nbsp;·&nbsp;&nbsp; [**VIEW ALL BUILDS**](https://github.com/Lurrn2757/sentinelgrid-releases/releases) &nbsp;&nbsp;·&nbsp;&nbsp; [**REPORT AN ISSUE**](https://github.com/Lurrn2757/sentinelgrid-releases/issues)
+Download the server archive for the monitoring server and the agent archive for each monitored host. Verify the selected files using [SHA256SUMS](downloads/0.2.1/SHA256SUMS), extract each archive and follow its README.md. Run `sudo ./install.sh` from the extracted server directory, configure HTTPS, then issue customer logins and individual host keys.
 
-<sub>PUBLIC DISTRIBUTION CHANNEL // ENGINEERING BY JLS TECHNOLOGIES LLP</sub>
+On a monitored host, run the installer with your address and the private key issued to that host.
 
-</div>
-
----
-
-### `01 // MISSION BRIEF`
-
-# MONITOR EVERYTHING THAT MATTERS.
-
-Infrastructure failure rarely announces itself politely. It starts with a spike, a missed heartbeat, an unreachable host, or a service quietly turning into a very expensive paperweight.
-
-**SentinelGrid** brings telemetry collection, alert handling, and operator workflows together in a self-hosted platform designed for real infrastructure, including Linux hosts and Proxmox environments.
-
-The goal isn't another wall of graphs. It's a shorter path between **something is wrong** and **someone can do something about it**.
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-<strong><code>01 / OBSERVE</code></strong>
-
-Collect host and infrastructure telemetry through SentinelGrid agents and central ingestion. Review historical metrics through Grafana dashboards.
-
-</td>
-<td width="50%" valign="top">
-
-<strong><code>02 / SURVIVE</code></strong>
-
-Buffer agent samples locally during interruptions and replay them when connectivity returns, rather than treating every network wobble as an excuse to lose data.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-<strong><code>03 / RESPOND</code></strong>
-
-Track alert state, acknowledgement, silence, recovery, and notification delivery with operational workflows rather than disposable messages.
-
-</td>
-<td valign="top">
-
-<strong><code>04 / CONTROL</code></strong>
-
-Use the Telegram operations interface and Proxmox-aware integrations for monitored infrastructure and carefully scoped operator actions.
-
-</td>
-</tr>
-</table>
-
----
-
-### `02 // SYSTEM TOPOLOGY`
-
-## THE SIGNAL PATH
-
-<img src=".github/assets/sentinelgrid-architecture.svg" width="100%" alt="Current SentinelGrid architecture: agents, ingestion API, PostgreSQL, Grafana, external Zabbix source, alert adapter, notifications and Telegram; Sentinel Engine V1 is in development." />
-
-The **telemetry pipeline** is independent of Zabbix. Host and infrastructure data flow through SentinelGrid's own collection and ingestion services.
-
-The **current external alert-source integration** uses Zabbix to supply certain infrastructure events. Those events feed SentinelGrid's incident lifecycle and notification workflows.
-
-**Sentinel Engine V1 is being developed to provide native detection and rule evaluation.** It is a roadmap component, not a feature claimed to be present in the current release.
-
-> [!NOTE]
-> Zabbix is not required for the core metrics pipeline. Zabbix-generated alert detection still requires an external Zabbix source until native rule evaluation replaces that responsibility.
-
----
-
-### `03 // CAPABILITY MATRIX`
-
-| SUBSYSTEM | WHAT IT DOES | STATUS |
-|:--|:--|:--|
-| **Sentinel agents** | Host telemetry, local buffering, delayed replay | `CURRENT` |
-| **Ingestion API** | Authenticated metric reception and processing | `CURRENT` |
-| **PostgreSQL** | Metric history and operational state persistence | `CURRENT` |
-| **Grafana** | Dashboards and historical infrastructure views | `CURRENT` |
-| **Alert workflows** | Incident tracking, acknowledgement, silence, recovery, delivery | `CURRENT` |
-| **Telegram operations** | Alerts, operator commands, Proxmox-aware workflows | `CURRENT` |
-| **Zabbix adapter** | External event-source integration | `CURRENT / TRANSITIONAL` |
-| **Sentinel Engine V1** | Native threshold rules, stateful detection, recovery evaluation | `IN DEVELOPMENT` |
-
-<details>
-<summary><b>▸ Expand: operating principles</b></summary>
-<br />
-
-```text
-PRINCIPLE_01  OWN THE TELEMETRY.
-PRINCIPLE_02  NO DATA LEFT BEHIND DURING A TRANSIENT OUTAGE.
-PRINCIPLE_03  INCIDENTS HAVE STATE. NOT JUST NOTIFICATIONS.
-PRINCIPLE_04  AUTHENTICATION IS NOT AN OPTIONAL ACCESSORY.
-PRINCIPLE_05  BUILD FOR RECOVERY, NOT JUST THE HAPPY PATH.
-PRINCIPLE_06  AUTOMATION MUST REMAIN AUDITABLE AND CONTROLLED.
+```sh
+sudo ./install.sh https://monitor.example.com 22,443 < web-01.key
 ```
 
-</details>
+Direct download copies are also available in [downloads/0.2.1](downloads/0.2.1).
 
----
+## Upgrade and compatibility
 
-### `04 // DOWNLOAD PROTOCOL`
+Standalone preview users can back up their state and install the server update. Existing standalone agents remain compatible. Earlier Docker/PostgreSQL deployments use separate state and credentials. Follow the [migration notes](releases/0.2.1.md) when moving those hosts to this edition.
 
-## DEPLOY THE GRID.
+The standalone series has been exercised on Ubuntu kernel 6.8 and Linux 7.3, with ARM64 testing under emulation. Kernel 5.0.1 and native ARM64 production environments remain unverified. The server retains up to 120 samples per host. Provider accounts require credentials and a live delivery check after configuration.
 
-**The current distribution channel is this repository's [GitHub Releases](https://github.com/Lurrn2757/sentinelgrid-releases/releases).** Download packages and installers from a specific published release, not from random mirrors or screenshots of terminal commands.
-
-**01.** Open **[Latest Release ↗](https://github.com/Lurrn2757/sentinelgrid-releases/releases/latest)**.
-
-**02.** Inspect the release notes, supported environment, and asset list. Download the installer or package appropriate to the target machine.
-
-**03.** Verify the provided release checksums before executing an installer. Review scripts before giving them elevated privileges.
-
-**04.** Follow that release's installation instructions on a supported machine. Use a fresh test VM before introducing SentinelGrid to important workloads.
-
-> [!WARNING]
-> Existing-install upgrades and automated rollback should not be assumed supported. Read the release's compatibility and migration notes before reinstalling over an existing deployment.
-
-<details>
-<summary><b>▸ Expand: minimal download verification example</b></summary>
-<br />
-
-For a release that publishes `install.sh` and `checksums.txt`, replace the tag if needed:
-
-```bash
-VERSION=v0.1.5
-BASE="https://github.com/Lurrn2757/sentinelgrid-releases/releases/download/${VERSION}"
-
-mkdir -p sentinelgrid-download && cd sentinelgrid-download
-curl --fail --location --silent --show-error "$BASE/install.sh" -o install.sh
-curl --fail --location --silent --show-error "$BASE/checksums.txt" -o checksums.txt
-
-awk '$2 == "install.sh" {print}' checksums.txt | sha256sum --check --status
-less install.sh
-```
-
-A passing checksum verifies a file against the accompanying manifest, **not** the publisher's identity. Review the script and use the release's documented install procedure for your deployment target.
-
-</details>
-
----
-
-### `05 // NEXT GENERATION`
-
-## SENTINEL ENGINE // V1
-
-```text
-┌─────────────────────────────────────────────────────────────────────┐
-│  NATIVE DETECTION CORE                                       [DEV]  │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│  01  THRESHOLD RULES        CPU / RAM / DISK / CUSTOM SIGNALS       │
-│  02  HEARTBEAT DETECTION   MISSING AGENTS / STALE TELEMETRY        │
-│  03  INCIDENT STATE        PENDING → FIRING → RECOVERED            │
-│  04  NOISE CONTROL         DURATION / DEDUPLICATION / HYSTERESIS   │
-│  05  DURABLE EVALUATION    RESTART-SAFE RULE AND ALERT STATE       │
-│                                                                     │
-│  OBJECTIVE: REPLACE THE EXTERNAL TRIGGER ENGINE, NOT THE STACK.     │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
-**This is the direction, not a shipping feature list.** Sentinel Engine V1 is intended to move infrastructure detection into SentinelGrid while preserving the telemetry, storage, alert lifecycle, and operator integrations already in place.
-
-The first milestone is simple to describe and difficult to fake: **turn off Zabbix, keep collecting metrics, detect real problems, produce one actionable incident, and resolve it correctly.**
-
----
-
-### `06 // DISTRIBUTION INTELLIGENCE`
-
-<details>
-<summary><b>▸ Is this the source-code repository?</b></summary>
-<br />
-
-No. **`sentinelgrid-releases`** is the public distribution channel for packaged releases, installers, checksums, and user-facing documentation. Development source is maintained separately.
-
-</details>
-
-<details>
-<summary><b>▸ Is SentinelGrid dependent on Zabbix?</b></summary>
-<br />
-
-The agent-to-ingestion-to-database telemetry path is independent. Today's Zabbix integration provides external infrastructure trigger events. Sentinel Engine V1 is being developed to replace that trigger-generation role.
-
-</details>
-
-<details>
-<summary><b>▸ Can I deploy it over Proxmox?</b></summary>
-<br />
-
-SentinelGrid includes Proxmox-aware monitoring and operational integrations. Start with a supported Linux VM or dedicated test environment, then validate credentials, permissions, recovery, and any enabled infrastructure mutations before using production hosts.
-
-</details>
-
-<details>
-<summary><b>▸ Is this ready for unattended enterprise-wide deployment?</b></summary>
-<br />
-
-Not a claim this repository makes. Validate your target environment, backups, restore procedures, monitoring behavior, and release-specific limitations first. Production readiness is a measured outcome, not a badge.
-
-</details>
-
----
-
-<div align="center">
-
-### `// END TRANSMISSION`
-
-# THE GRID NEVER BLINKS.
-
-**Detect early. Understand faster. Respond deliberately.**
-
-[**↓ RELEASES**](https://github.com/Lurrn2757/sentinelgrid-releases/releases) &nbsp; / &nbsp; [**⚑ ISSUES**](https://github.com/Lurrn2757/sentinelgrid-releases/issues)
-
-<br />
-
-<sub><b>SENTINELGRID</b> · ENGINEERED BY JLS TECHNOLOGIES LLP · © 2026</sub>
-
-</div>
+This public repository contains packaged downloads and user documentation. Development source is maintained in private storage.

@@ -1,0 +1,49 @@
+name: Publish SentinelGrid 0.2.1
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'downloads/0.2.1/**'
+      - 'releases/0.2.1.md'
+      - '.github/workflows/publish-0.2.1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-0.2.1
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify packaged downloads
+        working-directory: downloads/0.2.1
+        run: |
+          sha256sum -c SHA256SUMS
+          python3 - <<'PY'
+          import tarfile
+          from pathlib import Path
+          expected = {f'sentinelgrid-{role}-0.2.1-linux-{arch}.tar.gz'
+                      for role in ('server', 'agent') for arch in ('amd64', 'arm64')}
+          assert {p.name for p in Path('.').iterdir()} == expected | {'SHA256SUMS'}
+          for name in expected:
+              role = name.split('-')[1]
+              base = name.removesuffix('.tar.gz')
+              allowed = {base, f'{base}/sentinelgrid-{role}', f'{base}/install.sh',
+                         f'{base}/sentinelgrid-{role}.service', f'{base}/README.md',
+                         f'{base}/config.example', f'{base}/GO-LICENSE'}
+              if role == 'server':
+                  allowed |= {f'{base}/NOTIFICATIONS.md', f'{base}/notifications.example.json'}
+              with tarfile.open(name) as archive:
+                  assert {m.name.rstrip('/') for m in archive.getmembers()} == allowed
+                  assert all(m.isfile() or m.isdir() for m in archive.getmembers())
+          PY
+          mkdir /tmp/sg-version
+          tar xzf sentinelgrid-server-0.2.1-linux-amd64.tar.gz -C /tmp/sg-version
+          /tmp/sg-version/sentinelgrid-server-0.2.1-linux-amd64/sentinelgrid-server --version | grep -Fx 'sentinelgrid-server 0.2.1'
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v0.2.1 downloads/0.2.1/* --target "$GITHUB_SHA" --title "SentinelGrid 0.2.1 — Standalone monitoring, customer dashboards and alert intelligence" --notes-file releases/0.2.1.md --latest
